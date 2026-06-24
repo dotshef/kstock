@@ -54,7 +54,7 @@ export default function ReportContent() {
           {/* 핵심 카드 4개 */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 12 }}>
             {[
-              { label: '투자 의견',          icon: true,  value: r.opinion,                         sub: '실적 업황 개선과 AI 수요 증가로 실적 회복 기대', color: '#1B6CF2' },
+              { label: '투자 의견',          icon: true,  value: r.opinion,                         sub: '실적 업황 개선과 AI 수요 증가로 실적 회복 기대', color: r.opinion === '매수' ? '#E8342B' : r.opinion === '매도' ? '#3182f6' : '#F5C900' },
               { label: '◎ 목표 주가 (12개월)', icon: false, value: fmt(r.targetPrice) + '원',        sub: '▲ 13.1% 상승 여력',                            color: '#111827' },
               { label: '◷ 적정 주가 밴드',    icon: false, value: `${fmt(r.fairValueLow)}~${fmt(r.fairValueHigh)}`, sub: '보수적 ~ 낙관적 시나리오',         color: '#111827' },
               { label: '▤ 리포트 발간일',     icon: false, value: r.publishDate,                     sub: '다음 업데이트 2024.06.06',                       color: '#111827' },
@@ -64,7 +64,7 @@ export default function ReportContent() {
                   {card.icon && <TrendingUp size={12} color="#8B95A1" />}{card.label}
                 </div>
                 <div style={{ fontSize: 17, fontWeight: 800, color: card.color, marginTop: 6 }}>{card.value}</div>
-                <div style={{ fontSize: 11, color: card.color === '#1B6CF2' ? '#8B95A1' : '#E8342B', fontWeight: 700, marginTop: 6 }}>{card.sub}</div>
+                <div style={{ fontSize: 11, color: card.label === '◎ 목표 주가 (12개월)' ? '#E8342B' : '#8B95A1', fontWeight: 700, marginTop: 6 }}>{card.sub}</div>
               </div>
             ))}
           </div>
