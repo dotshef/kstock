@@ -64,4 +64,8 @@ export const SAMSUNG = {
   per: 14.2,
   pbr: 1.3,
   dividendYield: 2.14,
+  week52High: 88800,
+  week52Low: 66700,
+  foreignOwnership: 49.36,
+  beta1Y: 0.89,
 }

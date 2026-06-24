@@ -15,14 +15,14 @@ export default function FinancialTable() {
   return (
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 14 }}>
-        <div style={{ fontSize: 15, fontWeight: 800, color: '#111827' }}>주요 재무 지표 <span style={{ color: '#B0B8C1', fontSize: 12 }}>ⓘ</span></div>
+        <div style={{ fontSize: 15, fontWeight: 800, color: '#111827' }}>주요 재무 지표 <span style={{ color: '#B0B8C1', fontSize: 12 }}></span></div>
         <span style={{ fontSize: 12, color: '#8B95A1', cursor: 'default' }}>연간 ▾</span>
       </div>
 
       {/* 3×2 지표 카드 */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 9 }}>
         {metrics.map((m) => (
-          <div key={m.label} style={{ border: '1px solid #EEF1F6', borderRadius: 10, padding: 13, textAlign: 'center' }}>
+          <div key={m.label} style={{ background: '#F7F8FA', border: '1px solid #EEF1F6', borderRadius: 10, padding: 13, textAlign: 'center' }}>
             <div style={{ fontSize: 12, color: '#8B95A1' }}>{m.label}</div>
             <div style={{ fontSize: 17, fontWeight: 800, color: '#111827', marginTop: 4 }}>{m.value}</div>
           </div>
@@ -30,13 +30,13 @@ export default function FinancialTable() {
       </div>
 
       {/* 연도별 실적 테이블 */}
-      <div style={{ marginTop: 14, fontSize: 11, color: '#8B95A1', marginBottom: 6 }}>(단위: 억원)</div>
-      <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 11.5 }}>
+      <div style={{ marginTop: 18, fontSize: 11, color: '#8B95A1', marginBottom: 8 }}>(단위: 억원)</div>
+      <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
         <thead>
-          <tr style={{ color: '#8B95A1' }}>
-            <td style={{ padding: '5px 2px', textAlign: 'left' }}></td>
+          <tr>
+            <td style={{ padding: '8px 4px', textAlign: 'left' }}></td>
             {ANNUAL_FINANCIALS.map((f) => (
-              <td key={f.year} style={{ textAlign: 'right', padding: '5px 2px', color: f.year === '2024E' ? '#1B6CF2' : '#8B95A1', fontWeight: f.year === '2024E' ? 700 : 400 }}>
+              <td key={f.year} style={{ textAlign: 'right', padding: '8px 4px', color: f.year === '2024E' ? '#1B6CF2' : '#8B95A1', fontWeight: f.year === '2024E' ? 700 : 500, fontSize: 13 }}>
                 {f.year}
               </td>
             ))}
@@ -50,9 +50,9 @@ export default function FinancialTable() {
             { label: 'EPS(원)',  key: 'eps'              as const },
           ].map((row) => (
             <tr key={row.label} style={{ borderTop: '1px solid #F2F4F6' }}>
-              <td style={{ padding: '6px 2px', color: '#6B7684' }}>{row.label}</td>
+              <td style={{ padding: '11px 4px', color: '#6B7684', fontWeight: 500 }}>{row.label}</td>
               {ANNUAL_FINANCIALS.map((f) => (
-                <td key={f.year} style={{ textAlign: 'right', padding: '6px 2px', color: f.year === '2024E' ? '#111827' : '#4E5968', fontWeight: f.year === '2024E' ? 700 : 400 }}>
+                <td key={f.year} style={{ textAlign: 'right', padding: '11px 4px', color: f.year === '2024E' ? '#111827' : '#4E5968', fontWeight: f.year === '2024E' ? 700 : 400 }}>
                   {fmt(f[row.key])}
                 </td>
               ))}
@@ -61,9 +61,6 @@ export default function FinancialTable() {
         </tbody>
       </table>
 
-      <button style={{ width: '100%', height: 40, marginTop: 14, border: '1px solid #E5E8EB', borderRadius: 10, background: '#fff', color: '#4E5968', fontSize: 13, fontWeight: 600, cursor: 'default' }}>
-        더 많은 재무 정보 보기 ›
-      </button>
     </div>
   )
 }

@@ -20,7 +20,7 @@ export default function HeroSection() {
 
   const filtered = query
     ? STOCK_LIST.filter((s) => s.name.includes(query) || s.code.includes(query))
-    : STOCK_LIST
+    : []
 
   function go() {
     if (!query.trim()) {
@@ -122,7 +122,7 @@ export default function HeroSection() {
           {POPULAR_STOCKS.map((s) => (
             <span
               key={s.code}
-              onClick={go}
+              onClick={() => router.push(`/stock/${s.code}`)}
               style={{ padding: '7px 14px', border: '1px solid #E5E8EB', borderRadius: 999, fontSize: 13, fontWeight: 600, color: '#4E5968', cursor: 'pointer', background: '#fff' }}
             >
               {s.name}

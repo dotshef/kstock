@@ -1,6 +1,7 @@
 'use client'
 
 import { SAMSUNG } from '@/data/stocks'
+import { AI_ONE_LINER } from '@/data/reports'
 import { CANDLESTICK_DATA } from '@/data/candlestick'
 import SparklineChart from '@/components/common/SparklineChart'
 
@@ -16,12 +17,12 @@ export default function Screen2RightSidebar() {
       <div style={{ background: '#fff', border: '1px solid #EEF1F6', borderRadius: 16, padding: 20 }}>
         <div style={{ fontSize: 15, fontWeight: 800, color: '#111827', marginBottom: 14 }}>주요 지표 요약</div>
         {[
-          { k: '시가',     v: fmt(s.open) + '원',  color: '#111827' },
-          { k: '고가',     v: fmt(s.high) + '원',  color: '#E8342B' },
-          { k: '저가',     v: fmt(s.low)  + '원',  color: '#3182f6' },
-          { k: '전일종가', v: fmt(s.currentPrice - s.change) + '원', color: '#111827' },
-          { k: 'PER',      v: s.per.toFixed(2),   color: '#111827' },
-          { k: 'PBR',      v: s.pbr.toFixed(2),   color: '#111827' },
+          { k: '전일대비',     v: `▲ ${fmt(s.change)}`,        color: '#E8342B' },
+          { k: '등락률',       v: `▲ ${s.changeRate.toFixed(2)}%`, color: '#E8342B' },
+          { k: '52주 최고',    v: fmt(s.week52High),           color: '#111827' },
+          { k: '52주 최저',    v: fmt(s.week52Low),            color: '#111827' },
+          { k: '외국인 보유율', v: `${s.foreignOwnership.toFixed(2)}%`, color: '#111827' },
+          { k: '베타(1Y)',     v: s.beta1Y.toFixed(2),         color: '#111827' },
         ].map(({ k, v, color }) => (
           <div key={k} style={{ display: 'flex', justifyContent: 'space-between', padding: '9px 0', borderBottom: '1px solid #F7F8FA', fontSize: 13 }}>
             <span style={{ color: '#8B95A1' }}>{k}</span>
@@ -38,8 +39,19 @@ export default function Screen2RightSidebar() {
           <span>{Math.min(...yearClose).toLocaleString('ko-KR')}원</span>
           <span>{Math.max(...yearClose).toLocaleString('ko-KR')}원</span>
         </div>
-        <button style={{ width: '100%', height: 42, marginTop: 14, border: '1px solid #E5E8EB', borderRadius: 11, background: '#fff', color: '#4E5968', fontSize: 13, fontWeight: 600, cursor: 'default' }}>
-          상세 차트 보기
+      </div>
+
+      {/* AI 한줄 분석 */}
+      <div style={{ background: '#fff', border: '1px solid #EEF1F6', borderRadius: 16, padding: 20 }}>
+        <div style={{ fontSize: 15, fontWeight: 800, color: '#111827', marginBottom: 12 }}>
+          AI 한줄 분석{' '}
+          <span style={{ fontSize: 10, color: '#1B6CF2', background: '#EAF1FE', padding: '2px 6px', borderRadius: 5, fontWeight: 700 }}>Beta</span>
+        </div>
+        <div style={{ background: '#F5F3FF', borderRadius: 10, padding: 14, fontSize: 13, lineHeight: 1.6, color: '#4E5968' }}>
+          {AI_ONE_LINER}
+        </div>
+        <button style={{ width: '100%', height: 40, marginTop: 12, border: '1px solid #E5E8EB', borderRadius: 10, background: '#fff', color: '#1B6CF2', fontSize: 13, fontWeight: 700, cursor: 'default' }}>
+          AI 상세 분석 보기 ›
         </button>
       </div>
     </div>

@@ -1,10 +1,11 @@
-import { DUMMY_NEWS, AI_ONE_LINER } from '@/data/reports'
+import { DUMMY_NEWS, COMPANY_OVERVIEW } from '@/data/reports'
 
 export default function NewsAndAI() {
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 14, marginTop: 16 }}>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 14 }}>
+
       {/* 오늘의 뉴스 */}
-      <div style={{ border: '1px solid #EEF1F6', borderRadius: 12, padding: 16 }}>
+      <div style={{ background: '#fff', border: '1px solid #EEF1F6', borderRadius: 16, padding: '20px 22px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 12 }}>
           <span style={{ fontSize: 14, fontWeight: 700, color: '#111827' }}>오늘의 뉴스</span>
           <span style={{ fontSize: 12, color: '#8B95A1', cursor: 'default' }}>더보기 ›</span>
@@ -17,19 +18,28 @@ export default function NewsAndAI() {
         ))}
       </div>
 
-      {/* AI 한줄 분석 */}
-      <div style={{ border: '1px solid #EEF1F6', borderRadius: 12, padding: 16 }}>
-        <div style={{ fontSize: 14, fontWeight: 700, color: '#111827', marginBottom: 10 }}>
-          AI 한줄 분석{' '}
-          <span style={{ fontSize: 10, color: '#1B6CF2', background: '#EAF1FE', padding: '2px 6px', borderRadius: 5, fontWeight: 700 }}>Beta</span>
+      {/* 기업 개요 */}
+      <div style={{ background: '#fff', border: '1px solid #EEF1F6', borderRadius: 16, padding: '20px 22px', display: 'flex', flexDirection: 'column' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 12 }}>
+          <span style={{ fontSize: 14, fontWeight: 700, color: '#111827' }}>기업 개요</span>
+          <span style={{ fontSize: 12, color: '#8B95A1', cursor: 'default' }}>더보기 ›</span>
         </div>
-        <div style={{ background: '#F5F3FF', borderRadius: 10, padding: 14, fontSize: 13, lineHeight: 1.6, color: '#4E5968' }}>
-          {AI_ONE_LINER}
+        <p style={{ margin: '0 0 16px', fontSize: 13, lineHeight: 1.7, color: '#4E5968' }}>{COMPANY_OVERVIEW.description}</p>
+        <div style={{ marginTop: 'auto' }}>
+          {[
+            { k: 'CEO',    v: COMPANY_OVERVIEW.ceo },
+            { k: '설립일',  v: COMPANY_OVERVIEW.founded },
+            { k: '임직원',  v: COMPANY_OVERVIEW.employees },
+            { k: '업종',    v: COMPANY_OVERVIEW.industry },
+          ].map(({ k, v }) => (
+            <div key={k} style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 0', borderTop: '1px solid #F2F4F6', fontSize: 12 }}>
+              <span style={{ color: '#8B95A1' }}>{k}</span>
+              <span style={{ fontWeight: 600, color: '#333D4B' }}>{v}</span>
+            </div>
+          ))}
         </div>
-        <button style={{ width: '100%', height: 40, marginTop: 12, border: '1px solid #E5E8EB', borderRadius: 10, background: '#fff', color: '#1B6CF2', fontSize: 13, fontWeight: 700, cursor: 'default' }}>
-          AI 상세 분석 보기 ›
-        </button>
       </div>
+
     </div>
   )
 }

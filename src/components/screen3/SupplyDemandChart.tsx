@@ -20,7 +20,7 @@ export default function SupplyDemandChart() {
 
   return (
     <div>
-      <h3 className="text-sm font-semibold text-grey-900 mb-3">수급 분석 (누적 순매수)</h3>
+      <h3 style={{ fontSize: 14, fontWeight: 700, color: '#111827', marginBottom: 16 }}>수급 분석</h3>
       <ResponsiveContainer width="100%" height={220}>
         <LineChart data={cumulative} margin={{ top: 4, right: 8, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#f2f4f6" />

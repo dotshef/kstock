@@ -48,12 +48,12 @@ export default function CandlestickChart() {
         wickUpColor: '#f04452', wickDownColor: '#3182f6',
       })
       candleRef.current = candle as never
-      const volume = chart.addSeries(HistogramSeries, { priceFormat: { type: 'volume' }, priceScaleId: 'volume' })
+      const volume = chart.addSeries(HistogramSeries, { priceFormat: { type: 'volume' }, priceScaleId: 'volume', lastValueVisible: false, priceLineVisible: false })
       volumeRef.current = volume as never
       chart.priceScale('volume').applyOptions({ scaleMargins: { top: 0.75, bottom: 0 } })
-      const ma5  = chart.addSeries(LineSeries, { color: '#fe9800', lineWidth: 1, priceLineVisible: false })
-      const ma20 = chart.addSeries(LineSeries, { color: '#03b26c', lineWidth: 1, priceLineVisible: false })
-      const ma60 = chart.addSeries(LineSeries, { color: '#a234c7', lineWidth: 1, priceLineVisible: false })
+      const ma5  = chart.addSeries(LineSeries, { color: '#fe9800', lineWidth: 1, priceLineVisible: false, lastValueVisible: false })
+      const ma20 = chart.addSeries(LineSeries, { color: '#03b26c', lineWidth: 1, priceLineVisible: false, lastValueVisible: false })
+      const ma60 = chart.addSeries(LineSeries, { color: '#a234c7', lineWidth: 1, priceLineVisible: false, lastValueVisible: false })
       ma5Ref.current  = ma5  as never
       ma20Ref.current = ma20 as never
       ma60Ref.current = ma60 as never
@@ -82,13 +82,13 @@ export default function CandlestickChart() {
   }, [])
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-      <div style={{ display: 'flex', gap: 16, fontSize: 12, fontWeight: 700, marginBottom: -4 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+      <div ref={containerRef} className="w-full" />
+      <div style={{ display: 'flex', gap: 16, fontSize: 12, fontWeight: 700 }}>
         <span style={{ color: '#fe9800' }}>5일 이동평균선</span>
         <span style={{ color: '#03b26c' }}>20일 이동평균선</span>
         <span style={{ color: '#a234c7' }}>60일 이동평균선</span>
       </div>
-      <div ref={containerRef} className="w-full" />
     </div>
   )
 }

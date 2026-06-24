@@ -24,6 +24,47 @@ export const DUMMY_NEWS = [
   { title: 'HBM4 개발 순항...내년 초 양산 목표', source: '전자신문', time: '6시간 전' },
 ]
 
+export const COMPANY_OVERVIEW = {
+  description: '삼성전자는 반도체, 모바일, 디스플레이 등 다양한 사업을 영위하는 글로벌 전자기업입니다. 메모리 반도체 분야에서 글로벌 시장 점유율 1위를 유지하고 있으며, 지속적인 기술 혁신을 통해 성장하고 있습니다.',
+  ceo: '한종희',
+  founded: '1969.01.13',
+  employees: '약 26만 명',
+  industry: '반도체·전자',
+}
+
+export const FINANCIAL_SUMMARY = {
+  basis: '2024.03 기준',
+  items: [
+    { k: '매출액',    v: '719,156억', change: '-1.42%',    up: false },
+    { k: '영업이익',  v: '66,060억',  change: '+931.25%',  up: true  },
+    { k: '당기순이익', v: '67,547억',  change: '+1,525.43%', up: true  },
+    { k: '영업이익률', v: '9.18%',    change: '+8.28%p',   up: true  },
+    { k: 'ROE',       v: '9.36%',    change: '+8.10%p',   up: true  },
+  ],
+}
+
+export const DIVIDEND_INFO = {
+  yield: 2.14,
+  perShare: 1444,
+  payout: 20.5,
+  history: [
+    { year: '2020', amount: 1932 },
+    { year: '2021', amount: 1444 },
+    { year: '2022', amount: 1444 },
+    { year: '2023', amount: 1444 },
+    { year: '2024E', amount: 1500 },
+  ],
+}
+
+export const QUARTERLY_EARNINGS = [
+  { quarter: '23.1Q', revenue: 637455, op: 6402  },
+  { quarter: '23.2Q', revenue: 600050, op: 6685  },
+  { quarter: '23.3Q', revenue: 671520, op: 24340 },
+  { quarter: '23.4Q', revenue: 673210, op: 28120 },
+  { quarter: '24.1Q', revenue: 710480, op: 66060 },
+  { quarter: '24.2Q', revenue: 740000, op: 103470 },
+]
+
 export const AI_ONE_LINER = '외국인 수급 개선과 반도체 업황 회복이 맞물려 단기 상승 모멘텀 유효, 78,500원 저항선 돌파 시 추가 상승 기대.'
 
 export const AI_INSIGHTS = [

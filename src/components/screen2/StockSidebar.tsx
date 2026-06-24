@@ -88,7 +88,7 @@ export default function StockSidebar({ animate, watchlisted, animKey, onToggleWa
           width: '100%', height: 44, marginTop: 9,
           border: `1px solid ${watchlisted ? '#F5C900' : '#E5E8EB'}`,
           borderRadius: 11, background: watchlisted ? '#FFFBEA' : '#fff',
-          color: watchlisted ? '#C89A00' : '#4E5968',
+          color: '#4E5968',
           fontSize: 13.5, fontWeight: 600, cursor: 'pointer',
           display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
           transition: 'all 0.2s',

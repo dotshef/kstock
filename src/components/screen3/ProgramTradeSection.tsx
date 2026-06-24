@@ -12,7 +12,7 @@ export default function ProgramTradeSection() {
 
   return (
     <div>
-      <h3 className="text-sm font-semibold text-grey-900 mb-3">프로그램 매매 동향</h3>
+      <h3 style={{ fontSize: 14, fontWeight: 700, color: '#111827', marginBottom: 16 }}>프로그램 매매 동향</h3>
       <ResponsiveContainer width="100%" height={160}>
         <BarChart data={data} margin={{ top: 4, right: 8, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#f2f4f6" />
@@ -23,8 +23,8 @@ export default function ProgramTradeSection() {
             contentStyle={{ fontSize: 11, borderRadius: 8, border: '1px solid #e5e8eb' }}
           />
           <Legend wrapperStyle={{ fontSize: 11 }} />
-          <Bar dataKey="차익"  fill="#3182f6" opacity={0.7} />
-          <Bar dataKey="비차익" fill="#fe9800" opacity={0.7} />
+          <Bar dataKey="차익"  fill="#03b26c" opacity={0.7} />
+          <Bar dataKey="비차익" fill="#a234c7" opacity={0.7} />
         </BarChart>
       </ResponsiveContainer>
     </div>
