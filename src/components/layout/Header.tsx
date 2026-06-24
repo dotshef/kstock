@@ -18,7 +18,7 @@ export default function Header() {
         </Link>
         <div style={{ marginLeft: 'auto' }}>
           <Link
-            href="/report/005930"
+            href="/report"
             style={{
               height: 42, padding: '0 20px', border: 'none', borderRadius: 11,
               background: '#1B6CF2', color: '#fff', fontSize: 14, fontWeight: 700,

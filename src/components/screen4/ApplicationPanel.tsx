@@ -114,7 +114,6 @@ export default function ApplicationPanel() {
                     <span style={{ fontSize: 13, fontWeight: 600, color: '#4E5968' }}>
                       개인정보 수집·이용 동의 <span style={{ color: '#1B6CF2' }}>(필수)</span>
                     </span>
-                    <span style={{ marginLeft: 'auto', fontSize: 11, color: '#B0B8C1' }}>자세히 보기</span>
                   </div>
                   <div style={{ marginTop: 12, padding: 14, background: '#F8FAFC', border: '1px solid #F2F4F6', borderRadius: 10, fontSize: 11.5, color: '#8B95A1', lineHeight: 1.55, maxHeight: 96, overflow: 'hidden' }}>
                     [개인정보 수집·이용 동의]<br />

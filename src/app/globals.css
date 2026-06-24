@@ -59,6 +59,13 @@ body {
   color: var(--fg-primary);
   font-variant-numeric: tabular-nums;
   -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
 }
 
 a {
