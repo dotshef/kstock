@@ -1,0 +1,140 @@
+'use client'
+
+import { useState } from 'react'
+import { TrendingUp, Lock, Check } from 'lucide-react'
+import { REPORT_DETAIL } from '@/data/reports'
+
+type ReportTab = '핵심요약' | '수급분석' | '체크포인트'
+const TABS: ReportTab[] = ['핵심요약', '수급분석', '체크포인트']
+
+const fmt = (n: number) => n.toLocaleString('ko-KR')
+
+export default function ReportContent() {
+  const [tab, setTab] = useState<ReportTab>('핵심요약')
+  const r = REPORT_DETAIL
+
+  return (
+    <div>
+      {/* 헤더 */}
+      <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14 }}>
+        <div style={{ flex: 1 }}>
+          <div style={{ fontSize: 15, fontWeight: 700, color: '#6B7684' }}>삼성전자(005930)</div>
+          <h2 style={{ margin: '4px 0 8px', fontSize: 30, fontWeight: 800, color: '#111827', letterSpacing: '-0.02em' }}>
+            주가 전망 리포트 미리보기
+          </h2>
+          <div style={{ fontSize: 14, color: '#8B95A1' }}>전문가의 심층 분석 리포트를 무료로 받아보세요.</div>
+        </div>
+        <span style={{ padding: '7px 12px', background: '#F5F8FE', borderRadius: 8, fontSize: 12, color: '#6B7684', fontWeight: 600, flexShrink: 0, display: 'flex', alignItems: 'center', gap: 5 }}>
+          <Lock size={12} color="#6B7684" /> 일부 내용은 신청 후 확인 가능합니다.
+        </span>
+      </div>
+
+      {/* 탭 */}
+      <div style={{ display: 'flex', gap: 22, borderBottom: '1px solid #EEF1F6', margin: '22px 0' }}>
+        {TABS.map((t) => (
+          <button
+            key={t}
+            onClick={() => setTab(t)}
+            style={{
+              padding: '0 0 12px', fontSize: 14, fontWeight: 700, cursor: 'pointer',
+              background: 'none', border: 'none',
+              borderBottom: `2.5px solid ${tab === t ? '#1B6CF2' : 'transparent'}`,
+              color: tab === t ? '#1B6CF2' : '#8B95A1',
+              marginBottom: -1,
+            }}
+          >
+            {t}
+          </button>
+        ))}
+      </div>
+
+      {/* 탭 콘텐츠 */}
+      {tab === '핵심요약' && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+          {/* 핵심 카드 4개 */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 12 }}>
+            {[
+              { label: '투자 의견',          icon: true,  value: r.opinion,                         sub: '실적 업황 개선과 AI 수요 증가로 실적 회복 기대', color: '#1B6CF2' },
+              { label: '◎ 목표 주가 (12개월)', icon: false, value: fmt(r.targetPrice) + '원',        sub: '▲ 13.1% 상승 여력',                            color: '#111827' },
+              { label: '◷ 적정 주가 밴드',    icon: false, value: `${fmt(r.fairValueLow)}~${fmt(r.fairValueHigh)}`, sub: '보수적 ~ 낙관적 시나리오',         color: '#111827' },
+              { label: '▤ 리포트 발간일',     icon: false, value: r.publishDate,                     sub: '다음 업데이트 2024.06.06',                       color: '#111827' },
+            ].map((card) => (
+              <div key={card.label} style={{ border: '1px solid #EEF1F6', borderRadius: 12, padding: 16 }}>
+                <div style={{ fontSize: 12, color: '#8B95A1', display: 'flex', alignItems: 'center', gap: 4 }}>
+                  {card.icon && <TrendingUp size={12} color="#8B95A1" />}{card.label}
+                </div>
+                <div style={{ fontSize: 17, fontWeight: 800, color: card.color, marginTop: 6 }}>{card.value}</div>
+                <div style={{ fontSize: 11, color: card.color === '#1B6CF2' ? '#8B95A1' : '#E8342B', fontWeight: 700, marginTop: 6 }}>{card.sub}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* 핵심 요약 */}
+          <div>
+            <div style={{ fontSize: 15, fontWeight: 800, color: '#111827', marginBottom: 8 }}>1. 최근 실적 및 전망</div>
+            <p style={{ fontSize: 13.5, lineHeight: 1.65, color: '#6B7684' }}>{r.summary}</p>
+          </div>
+
+          {/* 목표가 레인지 시각화 */}
+          <div>
+            <div style={{ fontSize: 13, fontWeight: 700, color: '#4E5968', marginBottom: 8 }}>목표가 레인지</div>
+            <div style={{ position: 'relative', height: 32, background: '#F2F4F6', borderRadius: 999, overflow: 'hidden' }}>
+              <div style={{ position: 'absolute', height: '100%', background: '#EAF1FE', borderLeft: '2px solid #1B6CF2', borderRight: '2px solid #1B6CF2', left: '20%', width: '45%' }} />
+              <div style={{ position: 'absolute', height: '100%', width: 2, background: '#1B6CF2', left: `${((77800 - 60000) / (100000 - 60000)) * 100}%` }} />
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12, color: '#8B95A1', marginTop: 4 }}>
+              <span>{fmt(r.fairValueLow)}원 (하단)</span>
+              <span style={{ color: '#1B6CF2', fontWeight: 600 }}>{fmt(77800)}원 (현재가)</span>
+              <span>{fmt(r.fairValueHigh)}원 (상단)</span>
+            </div>
+          </div>
+
+          {/* 잠금 안내 */}
+          <div style={{ padding: '16px 18px', background: '#F5F8FE', borderRadius: 12, display: 'flex', gap: 10, alignItems: 'flex-start' }}>
+            <Lock size={16} color="#1B6CF2" style={{ flexShrink: 0, marginTop: 1 }} />
+            <div>
+              <div style={{ fontSize: 13.5, fontWeight: 700, color: '#1B6CF2' }}>전체 리포트는 무료 신청 후 확인하실 수 있습니다.</div>
+              <div style={{ fontSize: 12, color: '#8B95A1', marginTop: 3 }}>기업 분석, 수급 분석, 밸류에이션, 리스크 분석 등 상세 내용 제공</div>
+            </div>
+          </div>
+
+          {/* 법적 고지 */}
+          <div style={{ fontSize: 11, color: '#B0B8C1', lineHeight: 1.5, borderTop: '1px solid #F2F4F6', paddingTop: 14 }}>
+            {r.legalNotice}
+          </div>
+        </div>
+      )}
+
+      {tab === '수급분석' && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+          <div style={{ background: '#F9FAFB', borderRadius: 12, padding: 20 }}>
+            <div style={{ fontSize: 14, fontWeight: 700, color: '#111827', marginBottom: 10 }}>주요 수급 및 변동성 분석</div>
+            <p style={{ fontSize: 13.5, lineHeight: 1.65, color: '#6B7684' }}>{r.supplyDemandAnalysis}</p>
+          </div>
+          <div style={{ fontSize: 11, color: '#B0B8C1', lineHeight: 1.5, borderTop: '1px solid #F2F4F6', paddingTop: 14 }}>
+            {r.legalNotice}
+          </div>
+        </div>
+      )}
+
+      {tab === '체크포인트' && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+          <div>
+            <div style={{ fontSize: 15, fontWeight: 800, color: '#111827', marginBottom: 10 }}>2. 주요 체크 포인트</div>
+            <ul style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {r.checkpoints.map((pt, i) => (
+                <li key={i} style={{ display: 'flex', gap: 8, fontSize: 13, color: '#4E5968' }}>
+                  <Check size={14} color="#1B6CF2" strokeWidth={2.5} style={{ flexShrink: 0, marginTop: 1 }} />
+                  {pt}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div style={{ fontSize: 11, color: '#B0B8C1', lineHeight: 1.5, borderTop: '1px solid #F2F4F6', paddingTop: 14 }}>
+            {r.legalNotice}
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
