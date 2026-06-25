@@ -194,7 +194,11 @@ a {
   }
 
   .responsive-table-scroll table {
-    min-width: 520px;
+    min-width: 440px;
+  }
+
+  .mobile-hide-oldest-financial-col {
+    display: none;
   }
 }
 

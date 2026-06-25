@@ -24,7 +24,7 @@ export default function FinancialTable() {
       </div>
 
       {/* 3×2 지표 카드 */}
-      <div className="responsive-grid-3" style={{ display: 'grid', gridTemplateColumns: 'var(--grid-columns, repeat(3,1fr))', gap: 9 }}>
+      <div className="responsive-financial-metrics-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 9 }}>
         {metrics.map((m) => (
           <div key={m.label} style={{ background: '#F7F8FA', border: '1px solid #EEF1F6', borderRadius: 10, padding: 13, textAlign: 'center' }}>
             <div style={{ fontSize: 12, color: '#8B95A1' }}>{m.label}</div>
@@ -40,8 +40,8 @@ export default function FinancialTable() {
           <thead>
             <tr>
               <td style={{ padding: '8px 4px', textAlign: 'left' }}></td>
-              {ANNUAL_FINANCIALS.map((f) => (
-                <td key={f.year} style={{ textAlign: 'right', padding: '8px 4px', color: f.year === '2024E' ? '#1B6CF2' : '#8B95A1', fontWeight: f.year === '2024E' ? 700 : 500, fontSize: 13 }}>
+              {ANNUAL_FINANCIALS.map((f, index) => (
+                <td key={f.year} className={index === 0 ? 'mobile-hide-oldest-financial-col' : undefined} style={{ textAlign: 'right', padding: '8px 4px', color: f.year === '2024E' ? '#1B6CF2' : '#8B95A1', fontWeight: f.year === '2024E' ? 700 : 500, fontSize: 13 }}>
                   {f.year}
                 </td>
               ))}
@@ -56,8 +56,8 @@ export default function FinancialTable() {
             ].map((row) => (
               <tr key={row.label} style={{ borderTop: '1px solid #F2F4F6' }}>
                 <td style={{ padding: '11px 4px', color: '#6B7684', fontWeight: 500 }}>{row.label}</td>
-                {ANNUAL_FINANCIALS.map((f) => (
-                  <td key={f.year} style={{ textAlign: 'right', padding: '11px 4px', color: f.year === '2024E' ? '#111827' : '#4E5968', fontWeight: f.year === '2024E' ? 700 : 400 }}>
+                {ANNUAL_FINANCIALS.map((f, index) => (
+                  <td key={f.year} className={index === 0 ? 'mobile-hide-oldest-financial-col' : undefined} style={{ textAlign: 'right', padding: '11px 4px', color: f.year === '2024E' ? '#111827' : '#4E5968', fontWeight: f.year === '2024E' ? 700 : 400 }}>
                     {fmt(f[row.key])}
                   </td>
                 ))}
