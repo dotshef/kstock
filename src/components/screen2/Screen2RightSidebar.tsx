@@ -1,14 +1,14 @@
 'use client'
 
-import { SAMSUNG } from '@/data/stocks'
-import { AI_ONE_LINER } from '@/data/reports'
-import { CANDLESTICK_DATA } from '@/data/candlestick'
+import { STOCK_QUOTE } from '@/data/stocks/005930'
+import { AI_ONE_LINER } from '@/data/stocks/005930/report'
+import { CANDLESTICK_DATA } from '@/data/stocks/005930/chart'
 import SparklineChart from '@/components/common/SparklineChart'
 
 const fmt = (n: number) => n.toLocaleString('ko-KR')
 
 export default function Screen2RightSidebar() {
-  const s = SAMSUNG
+  const s = STOCK_QUOTE
   const yearClose = CANDLESTICK_DATA['1년'].map((d) => d.close)
 
   return (

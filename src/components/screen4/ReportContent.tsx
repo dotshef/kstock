@@ -6,7 +6,8 @@ import {
   BarChart, Bar, Cell, ComposedChart, Line,
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
 } from 'recharts'
-import { REPORT_DETAIL, QUARTERLY_EARNINGS } from '@/data/reports'
+import { REPORT_DETAIL } from '@/data/stocks/005930/report'
+import { QUARTERLY_EARNINGS } from '@/data/stocks/005930/financials'
 
 type ReportTab = '핵심요약' | '수급분석'
 const TABS: ReportTab[] = ['핵심요약', '수급분석']

@@ -1,7 +1,7 @@
 'use client'
 
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
-import { SUPPLY_DEMAND } from '@/data/supply-demand'
+import { SUPPLY_DEMAND } from '@/data/stocks/005930/chart'
 
 export default function SupplyDemandChart() {
   const cumulative = SUPPLY_DEMAND.reduce<{ date: string; foreign: number; institution: number; individual: number }[]>(

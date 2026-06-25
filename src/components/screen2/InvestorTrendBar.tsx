@@ -1,4 +1,4 @@
-import { NET_BUY_SUMMARY } from '@/data/supply-demand'
+import { NET_BUY_SUMMARY } from '@/data/stocks/005930/chart'
 
 const fmt = (n: number) => {
   const abs = Math.abs(n)

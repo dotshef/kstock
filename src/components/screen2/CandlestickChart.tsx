@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 import type { ISeriesApi } from 'lightweight-charts'
-import { CANDLESTICK_DATA } from '@/data/candlestick'
+import { CANDLESTICK_DATA } from '@/data/stocks/005930/chart'
 
 function calcMA(data: { close: number }[], len: number) {
   return data.map((_, i) => {

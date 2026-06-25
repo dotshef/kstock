@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { REPORT_CARDS } from '@/data/stocks'
+import { REPORT_CARDS } from '@/data/registry'
 
 export default function ReportCards() {
   return (

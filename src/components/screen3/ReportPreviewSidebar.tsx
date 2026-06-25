@@ -1,13 +1,6 @@
 import Link from 'next/link'
 import { Check } from 'lucide-react'
-
-const REPORT_POINTS = [
-  '목표주가 88,000원 (현재 대비 +13.1% 상승여력)',
-  '외국인 순매수 전환 및 기관 매수세 확인',
-  'HBM 수요 확대 및 고부가 메모리 비중 확대',
-  '2024년 하반기 실적 턴어라운드 기대',
-  '적정주가 밴드: 77,000 ~ 88,500원',
-]
+import { REPORT_POINTS } from '@/data/stocks/005930/report'
 
 export default function ReportPreviewSidebar() {
   return (

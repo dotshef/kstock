@@ -5,7 +5,7 @@ import {
   Tooltip, ResponsiveContainer, Legend,
   BarChart, Cell,
 } from 'recharts'
-import { DIVIDEND_INFO, QUARTERLY_EARNINGS } from '@/data/reports'
+import { DIVIDEND_INFO, QUARTERLY_EARNINGS } from '@/data/stocks/005930/financials'
 
 const fmt = (n: number) => n.toLocaleString('ko-KR')
 

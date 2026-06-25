@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
-import { STOCK_LIST, POPULAR_STOCKS } from '@/data/stocks'
+import { STOCK_LIST, POPULAR_STOCKS } from '@/data/registry'
 import { BarChart2, Bot, FileText, Search, type LucideIcon } from 'lucide-react'
 
 const FEATURES: { icon: LucideIcon; title: string; desc: string; bg: string }[] = [

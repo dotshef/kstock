@@ -1,4 +1,4 @@
-import { FINANCIAL_METRICS, ANNUAL_FINANCIALS } from '@/data/financials'
+import { FINANCIAL_METRICS, ANNUAL_FINANCIALS } from '@/data/stocks/005930/financials'
 
 const fmt = (n: number) => n.toLocaleString('ko-KR')
 

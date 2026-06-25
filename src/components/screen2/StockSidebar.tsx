@@ -4,8 +4,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Star } from 'lucide-react'
 import CountingNumber from '@/components/common/CountingNumber'
-import { SAMSUNG } from '@/data/stocks'
-import { getStockMeta } from '@/data/stocks'
+import { STOCK_QUOTE } from '@/data/stocks/005930'
+import { getStockMeta } from '@/data/registry'
 
 interface Props {
   animate: boolean
@@ -17,7 +17,7 @@ interface Props {
 const fmt = (n: number) => n.toLocaleString('ko-KR')
 
 export default function StockSidebar({ animate, watchlisted, animKey, onToggleWatchlist }: Props) {
-  const s = SAMSUNG
+  const s = STOCK_QUOTE
   const meta = getStockMeta(s.code)
   return (
     <div style={{ background: '#fff', border: '1px solid #EEF1F6', borderRadius: 16, padding: 22 }}>

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { TrendingUp, Bot, Zap, Search, type LucideIcon } from 'lucide-react'
-import { AI_INSIGHTS } from '@/data/reports'
+import { AI_INSIGHTS } from '@/data/stocks/005930/report'
 
 const INSIGHT_ICONS: LucideIcon[] = [TrendingUp, Bot, Zap, Search]
 

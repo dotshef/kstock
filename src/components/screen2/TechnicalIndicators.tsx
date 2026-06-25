@@ -1,54 +1,7 @@
 'use client'
 
 import SparklineChart from '@/components/common/SparklineChart'
-
-const INDICATORS = [
-  {
-    name: '이동평균선',
-    value: '정배열',
-    signal: '매수',
-    signalUp: true,
-    sub: '5 > 20 > 60 > 120',
-    data: [72, 73, 74, 74, 75, 76, 76, 77, 78, 78, 79],
-    isRise: true,
-  },
-  {
-    name: 'RSI (14)',
-    value: '58.45',
-    signal: '중립',
-    signalUp: null,
-    sub: null,
-    data: [50, 53, 55, 52, 58, 56, 60, 57, 59, 58, 58],
-    isRise: true,
-  },
-  {
-    name: 'MACD',
-    value: '+812.45',
-    signal: '매수',
-    signalUp: true,
-    sub: null,
-    data: [200, 300, 450, 380, 500, 620, 580, 700, 760, 800, 812],
-    isRise: true,
-  },
-  {
-    name: 'Stochastic',
-    value: '62.31',
-    signal: '중립',
-    signalUp: null,
-    sub: null,
-    data: [55, 60, 58, 65, 62, 68, 64, 70, 65, 63, 62],
-    isRise: true,
-  },
-  {
-    name: 'BB %b',
-    value: '0.46',
-    signal: '중립',
-    signalUp: null,
-    sub: null,
-    data: [0.30, 0.38, 0.35, 0.44, 0.42, 0.50, 0.45, 0.48, 0.44, 0.47, 0.46],
-    isRise: false,
-  },
-]
+import { TECHNICAL_INDICATORS as INDICATORS } from '@/data/stocks/005930/chart'
 
 function signalStyle(signalUp: boolean | null): React.CSSProperties {
   if (signalUp === true)  return { color: '#E8342B' }

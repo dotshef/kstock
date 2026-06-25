@@ -48,24 +48,3 @@ export function getStockMeta(code: string): StockMeta | undefined {
 
 export const POPULAR_STOCKS = STOCK_LIST.map(({ name, code }) => ({ name, code }))
 export const REPORT_CARDS = STOCK_LIST.map(({ code, name, image, hot, summary }) => ({ code, name, image, hot, summary }))
-
-export const SAMSUNG = {
-  code: '005930',
-  name: '삼성전자',
-  currentPrice: 77800,
-  change: 800,
-  changeRate: 1.04,
-  open: 76900,
-  high: 78100,
-  low: 76500,
-  volume: 12_840_619,
-  tradingValue: 998_000_000_000,
-  marketCap: 464_000_000_000_000,
-  per: 14.2,
-  pbr: 1.3,
-  dividendYield: 2.14,
-  week52High: 88800,
-  week52Low: 66700,
-  foreignOwnership: 49.36,
-  beta1Y: 0.89,
-}

@@ -1,13 +1,7 @@
 'use client'
 
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts'
-
-const SHAREHOLDERS = [
-  { name: '외국인', value: 49.36, color: '#3182f6' },
-  { name: '기관',   value: 27.15, color: '#8B95A1' },
-  { name: '개인',   value: 22.84, color: '#E8342B' },
-  { name: '기타',   value:  0.65, color: '#D1D6DB' },
-]
+import { SHAREHOLDERS } from '@/data/stocks/005930/chart'
 
 export default function MajorShareholders() {
   return (

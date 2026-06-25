@@ -1,4 +1,4 @@
-import { DUMMY_NEWS, COMPANY_OVERVIEW } from '@/data/reports'
+import { DUMMY_NEWS, COMPANY_OVERVIEW } from '@/data/stocks/005930/report'
 
 export default function NewsAndAI() {
   return (
