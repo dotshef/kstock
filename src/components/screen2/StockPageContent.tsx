@@ -5,6 +5,7 @@ import { useSearchParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Star, Share2 } from 'lucide-react'
 import LoadingOverlay from '@/components/common/LoadingOverlay'
+import { STOCK_QUOTE } from '@/data/stocks/005930'
 import StockSidebar from '@/components/screen2/StockSidebar'
 import CandlestickChart from '@/components/screen2/CandlestickChart'
 import InvestorTrendBar from '@/components/screen2/InvestorTrendBar'
@@ -49,10 +50,11 @@ export default function StockPageContent() {
   }, [])
 
   function handleTabClick(key: string) {
-    if (key === 'overview')  router.replace('/stock/005930')
-    if (key === 'chart')     router.replace('/stock/005930?tab=chart')
-    if (key === 'financial') router.replace('/stock/005930?tab=financial')
-    if (key === 'supply')    router.replace('/stock/005930?tab=supply')
+    const base = `/stock/${STOCK_QUOTE.code}`
+    if (key === 'overview')  router.replace(base)
+    if (key === 'chart')     router.replace(`${base}?tab=chart`)
+    if (key === 'financial') router.replace(`${base}?tab=financial`)
+    if (key === 'supply')    router.replace(`${base}?tab=supply`)
   }
 
   const tabsRow = (
@@ -109,8 +111,8 @@ export default function StockPageContent() {
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16, fontSize: 13 }}>
           <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 6, color: '#6B7684', textDecoration: 'none' }}>← 검색 결과</Link>
           <span style={{ color: '#D1D6DB' }}>|</span>
-          <span style={{ fontWeight: 700, color: '#1B6CF2' }}>005930</span>
-          <span style={{ fontWeight: 600, color: '#4E5968' }}>삼성전자</span>
+          <span style={{ fontWeight: 700, color: '#1B6CF2' }}>{STOCK_QUOTE.code}</span>
+          <span style={{ fontWeight: 600, color: '#4E5968' }}>{STOCK_QUOTE.name}</span>
           <div style={{ marginLeft: 'auto', display: 'flex', gap: 18 }}>
             <span
               onClick={toggleWatchlist}

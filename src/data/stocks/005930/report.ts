@@ -6,6 +6,7 @@ export const REPORT_DETAIL = {
   fairValueLow: 82000,
   fairValueHigh: 98000,
   publishDate: '2024.06.24',
+  nextUpdateDate: '2024.06.06',
   analyst: '박지현 (K-Stock 리서치센터)',
   summary: '반도체 업황 회복과 HBM 수요 증가에 따른 실적 개선 기대. 목표주가 95,000원으로 상향 조정.',
   supplyDemandAnalysis: `최근 20거래일 외국인 순매수 1,246,817주로 수급 개선 확인. 기관은 소폭 매도세이나 외국인 주도 상승 흐름 유지. 공매도 잔고 비율 0.8%로 낮은 수준 유지 중. 주가 변동성(20일 ATR) 2,134원으로 안정적 흐름 형성.`,

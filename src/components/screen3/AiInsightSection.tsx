@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { TrendingUp, Bot, Zap, Search, type LucideIcon } from 'lucide-react'
-import { AI_INSIGHTS } from '@/data/stocks/005930/report'
+import { AI_INSIGHTS, REPORT_DETAIL } from '@/data/stocks/005930/report'
 
 const INSIGHT_ICONS: LucideIcon[] = [TrendingUp, Bot, Zap, Search]
 
@@ -23,7 +23,7 @@ export default function AiInsightSection() {
         </div>
       ))}
       <Link
-        href="/report/005930"
+        href={`/report/${REPORT_DETAIL.code}`}
         style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', height: 40, marginTop: 12, border: '1px solid #E5E8EB', borderRadius: 10, background: '#fff', color: '#1B6CF2', fontSize: 13, fontWeight: 700, textDecoration: 'none' }}
       >
         AI 분석 상세 보기 ›

@@ -1,7 +1,9 @@
 'use client'
 
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts'
-import { SHAREHOLDERS } from '@/data/stocks/005930/chart'
+import { SHAREHOLDERS, SHAREHOLDERS_DATE } from '@/data/stocks/005930/chart'
+
+const foreign = SHAREHOLDERS.find((s) => s.name === '외국인')!
 
 export default function MajorShareholders() {
   return (
@@ -40,7 +42,7 @@ export default function MajorShareholders() {
             textAlign: 'center', lineHeight: 1.3,
           }}>
             <div style={{ fontSize: 10, color: '#8B95A1', fontWeight: 600 }}>외국인 지분율</div>
-            <div style={{ fontSize: 14, fontWeight: 800, color: '#111827' }}>49.36%</div>
+            <div style={{ fontSize: 14, fontWeight: 800, color: '#111827' }}>{foreign.value.toFixed(2)}%</div>
           </div>
         </div>
 
@@ -57,7 +59,7 @@ export default function MajorShareholders() {
       </div>
 
       <div style={{ marginTop: 14, fontSize: 11, color: '#B0B8C1', textAlign: 'right' }}>
-        기준일: 2024.05.23
+        기준일: {SHAREHOLDERS_DATE}
       </div>
     </div>
   )

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { Check } from 'lucide-react'
-import { REPORT_POINTS } from '@/data/stocks/005930/report'
+import { REPORT_POINTS, REPORT_DETAIL } from '@/data/stocks/005930/report'
 
 export default function ReportPreviewSidebar() {
   return (
@@ -13,7 +13,7 @@ export default function ReportPreviewSidebar() {
       {/* 리포트 카드 (그라디언트) */}
       <div style={{ borderRadius: 12, background: 'linear-gradient(135deg,#0F2552,#1B3F86)', padding: 18, color: '#fff', position: 'relative', overflow: 'hidden' }}>
         <div style={{ fontSize: 11, opacity: 0.7 }}>K-Stock 전문가 리포트</div>
-        <div style={{ fontSize: 16, fontWeight: 800, marginTop: 6 }}>삼성전자(005930)</div>
+        <div style={{ fontSize: 16, fontWeight: 800, marginTop: 6 }}>{REPORT_DETAIL.name}({REPORT_DETAIL.code})</div>
         <div style={{ fontSize: 15, fontWeight: 700, color: '#9DC2FF' }}>주가 전망 리포트</div>
         <div style={{ display: 'inline-block', marginTop: 12, padding: '6px 11px', background: 'rgba(255,255,255,.16)', borderRadius: 7, fontSize: 11, fontWeight: 600 }}>
           핵심 내용 미리보기
@@ -35,7 +35,7 @@ export default function ReportPreviewSidebar() {
       </div>
 
       <Link
-        href="/report/005930"
+        href={`/report/${REPORT_DETAIL.code}`}
         style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', height: 46, marginTop: 10, borderRadius: 11, background: '#1B6CF2', color: '#fff', fontSize: 14, fontWeight: 700, textDecoration: 'none' }}
       >
         무료 리포트 신청하기

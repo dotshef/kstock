@@ -8,6 +8,7 @@ import {
 } from 'recharts'
 import { REPORT_DETAIL } from '@/data/stocks/005930/report'
 import { QUARTERLY_EARNINGS } from '@/data/stocks/005930/financials'
+import { STOCK_QUOTE } from '@/data/stocks/005930'
 
 type ReportTab = '핵심요약' | '수급분석'
 const TABS: ReportTab[] = ['핵심요약', '수급분석']
@@ -23,7 +24,7 @@ export default function ReportContent() {
       {/* 헤더 */}
       <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14 }}>
         <div style={{ flex: 1 }}>
-          <div style={{ fontSize: 15, fontWeight: 700, color: '#6B7684' }}>삼성전자(005930)</div>
+          <div style={{ fontSize: 15, fontWeight: 700, color: '#6B7684' }}>{r.name}({r.code})</div>
           <h2 style={{ margin: '4px 0 8px', fontSize: 30, fontWeight: 800, color: '#111827', letterSpacing: '-0.02em' }}>
             주가 전망 리포트 미리보기
           </h2>
@@ -60,8 +61,8 @@ export default function ReportContent() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 12 }}>
             {[
               { label: '투자 의견',           icon: true,  value: r.opinion,                                                   sub: '실적 업황 개선과 AI 수요 증가로 실적 회복 기대', color: r.opinion === '매수' ? '#E8342B' : r.opinion === '매도' ? '#3182f6' : '#F5C900', subColor: '#8B95A1' },
-              { label: '현재가',              icon: false, value: fmt(77800) + '원',                                           sub: '▼ 0.51% 전일 대비',                            color: '#111827', subColor: '#8B95A1' },
-              { label: '◎ 목표 주가 (12개월)', icon: false, value: fmt(r.targetPrice) + '원',                                 sub: '▲ 13.1% 상승 여력',                            color: '#111827', subColor: '#E8342B' },
+              { label: '현재가',              icon: false, value: fmt(STOCK_QUOTE.currentPrice) + '원',                       sub: `${STOCK_QUOTE.changeRate >= 0 ? '▲' : '▼'} ${Math.abs(STOCK_QUOTE.changeRate).toFixed(2)}% 전일 대비`,  color: '#111827', subColor: '#8B95A1' },
+              { label: '◎ 목표 주가 (12개월)', icon: false, value: fmt(r.targetPrice) + '원',                                 sub: `▲ ${((r.targetPrice / STOCK_QUOTE.currentPrice - 1) * 100).toFixed(1)}% 상승 여력`,  color: '#111827', subColor: '#E8342B' },
               { label: '◷ 적정 주가 밴드',    icon: false, value: `${fmt(r.fairValueLow)}~${fmt(r.fairValueHigh)}`,           sub: '보수적 시나리오 ~ 낙관적 시나리오 기준',                      color: '#111827', subColor: '#8B95A1' },
             ].map((card) => (
               <div key={card.label} style={{ border: '1px solid #EEF1F6', borderRadius: 12, padding: 16 }}>
@@ -77,7 +78,7 @@ export default function ReportContent() {
           {/* 발간일 메타 */}
           <div style={{ display: 'flex', gap: 20, fontSize: 12, color: '#8B95A1' }}>
             <span>▤ 리포트 발간일 <strong style={{ color: '#4E5968' }}>{r.publishDate}</strong></span>
-            <span>다음 업데이트 <strong style={{ color: '#4E5968' }}>2024.06.06</strong></span>
+            <span>다음 업데이트 <strong style={{ color: '#4E5968' }}>{r.nextUpdateDate}</strong></span>
           </div>
 
           {/* 핵심 요약 */}

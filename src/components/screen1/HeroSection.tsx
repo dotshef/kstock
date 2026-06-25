@@ -22,12 +22,10 @@ export default function HeroSection() {
     ? STOCK_LIST.filter((s) => s.name.includes(query) || s.code.includes(query))
     : []
 
-  function go() {
-    if (!query.trim()) {
-      setShowError(true)
-      return
-    }
-    router.push('/stock/005930')
+  function go(code?: string) {
+    if (!query.trim()) { setShowError(true); return }
+    const target = code ?? STOCK_LIST.find((s) => s.name === query || s.code === query)?.code ?? STOCK_LIST[0].code
+    router.push(`/stock/${target}`)
   }
 
   return (
@@ -88,7 +86,7 @@ export default function HeroSection() {
                 {filtered.map((s) => (
                   <div
                     key={s.code}
-                    onMouseDown={go}
+                    onMouseDown={() => go(s.code)}
                     style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '13px 16px', cursor: 'pointer', borderBottom: '1px solid #F2F4F6' }}
                   >
                     <div style={{ width: 30, height: 30, borderRadius: 8, background: '#fff', border: '1px solid #EEF1F6', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, overflow: 'hidden' }}>
@@ -103,7 +101,7 @@ export default function HeroSection() {
             )}
           </div>
           <button
-            onClick={go}
+            onClick={() => go()}
             style={{ height: 58, padding: '0 26px', border: 'none', borderRadius: 13, background: '#1B6CF2', color: '#fff', fontSize: 16, fontWeight: 700, cursor: 'pointer', flexShrink: 0 }}
           >
             검색하기

@@ -3,9 +3,12 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
 import { Check, Lock, Smartphone, Clock } from 'lucide-react'
+import { POPULAR_STOCKS } from '@/data/registry'
+
+const defaultStock = `${POPULAR_STOCKS[0].name}(${POPULAR_STOCKS[0].code})`
 
 export default function ApplicationPanel() {
-  const [form, setForm] = useState({ name: '', phone: '', stock: '삼성전자(005930)', agree: false })
+  const [form, setForm] = useState({ name: '', phone: '', stock: defaultStock, agree: false })
   const [submitted, setSubmitted] = useState(false)
   const [errors, setErrors] = useState<Record<string, string>>({})
 

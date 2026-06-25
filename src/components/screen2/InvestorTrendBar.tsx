@@ -1,4 +1,4 @@
-import { NET_BUY_SUMMARY } from '@/data/stocks/005930/chart'
+import { NET_BUY_SUMMARY, NET_BUY_DATE } from '@/data/stocks/005930/chart'
 
 const fmt = (n: number) => {
   const abs = Math.abs(n)
@@ -16,7 +16,7 @@ export default function InvestorTrendBar() {
     <div style={{ borderTop: '1px solid #EEF1F6', marginTop: 14, paddingTop: 14 }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
         <div style={{ fontSize: 14, fontWeight: 700, color: '#111827' }}>투자자별 매매 동향</div>
-        <div style={{ fontSize: 11, color: '#8B95A1' }}>05.23 기준 (단위 : 주)</div>
+        <div style={{ fontSize: 11, color: '#8B95A1' }}>{NET_BUY_DATE} 기준 (단위 : 주)</div>
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 12 }}>
         {items.map((item) => {

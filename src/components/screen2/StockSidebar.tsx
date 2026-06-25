@@ -43,7 +43,7 @@ export default function StockSidebar({ animate, watchlisted, animKey, onToggleWa
         <div style={{ display: 'inline-flex', alignItems: 'center', padding: '2px 8px', background: '#3182f6', borderRadius: 6, fontSize: 11, fontWeight: 700, color: '#fff' }}>
           실시간
         </div>
-        <span style={{ fontSize: 11, color: '#8B95A1' }}>05.23 10:15 기준</span>
+        <span style={{ fontSize: 11, color: '#8B95A1' }}>{s.lastUpdated} 기준</span>
       </div>
 
       {/* 주요 수치 */}
@@ -77,7 +77,7 @@ export default function StockSidebar({ animate, watchlisted, animKey, onToggleWa
 
       {/* CTA */}
       <Link
-        href="/report/005930"
+        href={`/report/${s.code}`}
         style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', height: 46, marginTop: 18, borderRadius: 11, background: '#1B6CF2', color: '#fff', fontSize: 14, fontWeight: 700, textDecoration: 'none' }}
       >
         무료 리포트 신청하기

@@ -1,4 +1,5 @@
 import { seededRng } from '../../_rng'
+import { STOCK_QUOTE } from './index'
 
 // ─── Candlestick ──────────────────────────────────────────────────────────────
 
@@ -99,6 +100,8 @@ export const SUPPLY_DEMAND: DailySupplyDemand[] = Array.from({ length: 30 }, (_,
   individual:  Math.round((supplyRand() - 0.55) * 1_200_000),
 }))
 
+export const NET_BUY_DATE = '2024.05.23'
+
 export const NET_BUY_SUMMARY = {
   foreign:      1_246_817,
   institution:   -412_043,
@@ -164,8 +167,10 @@ export const TECHNICAL_INDICATORS = [
 // ─── Shareholders ─────────────────────────────────────────────────────────────
 
 export const SHAREHOLDERS = [
-  { name: '외국인', value: 49.36, color: '#3182f6' },
-  { name: '기관',   value: 27.15, color: '#8B95A1' },
-  { name: '개인',   value: 22.84, color: '#E8342B' },
-  { name: '기타',   value:  0.65, color: '#D1D6DB' },
+  { name: '외국인', value: STOCK_QUOTE.foreignOwnership, color: '#3182f6' },
+  { name: '기관',   value: 27.15,                        color: '#8B95A1' },
+  { name: '개인',   value: 22.84,                        color: '#E8342B' },
+  { name: '기타',   value:  0.65,                        color: '#D1D6DB' },
 ]
+
+export const SHAREHOLDERS_DATE = '2024.05.23'
